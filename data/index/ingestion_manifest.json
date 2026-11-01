@@ -1,0 +1,16 @@
+{
+  "documents": [
+    {
+      "name": "kerc_electricity_supply_code.pdf",
+      "sha256": "4e1a4e777344031ac8f0ae6f59a827a3904c7c08c485f7096c0e82c0b51c885b"
+    },
+    {
+      "name": "kerc_retail_tariff_order.pdf",
+      "sha256": "9b1c746ecb4e21d70582f74ab8e6aee9a112d6b3ff9a5dc335595f726886c950"
+    }
+  ],
+  "page_count": 707,
+  "chunk_count": 1937,
+  "elapsed_seconds": 12.114,
+  "chunks_per_second": 159.9
+}

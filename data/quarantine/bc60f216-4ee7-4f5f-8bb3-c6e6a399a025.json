@@ -1,0 +1,18 @@
+{
+  "record_id": "bc60f216-4ee7-4f5f-8bb3-c6e6a399a025",
+  "payload": {
+    "consumer_reference": "string",
+    "complaint_text": "stringstri",
+    "premises_type": "string",
+    "connected_load_kw": 1,
+    "current_tariff_category": "string"
+  },
+  "errors": [
+    {
+      "field": "body.premises_type",
+      "message": "Input should be 'domestic', 'commercial', 'industrial', 'mixed_use' or 'other'",
+      "type": "enum"
+    }
+  ],
+  "agent_started": false
+}

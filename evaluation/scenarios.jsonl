@@ -1,0 +1,17 @@
+{
+  "scenario_id": "S001",
+  "complaint": {
+    "consumer_reference": "TEST-001",
+    "complaint_text": "My domestic connection is used partly for a tailoring shop.",
+    "premises_type": "mixed_use",
+    "connected_load_kw": 3.0,
+    "current_tariff_category": "domestic"
+  },
+  "expected_complaint_type": "tariff_category",
+  "expected_route": null,
+  "expected_escalation": true,
+  "supporting_document_id": null,
+  "supporting_clause_id": null,
+  "supporting_page": null,
+  "expected_reason": "The correct treatment must be established from the applicable mixed-use provisions."
+}

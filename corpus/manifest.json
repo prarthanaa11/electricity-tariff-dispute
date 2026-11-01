@@ -1,0 +1,24 @@
+{
+  "documents": [
+    {
+      "document_id": "TARIFF_ORDER",
+      "file": "kerc_retail_tariff_order.pdf",
+      "document_type": "retail_tariff_order",
+      "state": "Karnataka",
+      "authority": "KERC",
+      "version": "Combined Tariff Order 2025",
+      "effective_date": "2025-04-01",
+      "source_url": "https://data.opencity.in/dataset/kerc-combined-tariff-order-2025/resource/9e85e018-34cd-48a3-93c7-0b95ecf804d4"
+    },
+    {
+      "document_id": "SUPPLY_CODE",
+      "file": "kerc_electricity_supply_code.pdf",
+      "document_type": "electricity_supply_code",
+      "state": "Karnataka",
+      "authority": "KERC",
+      "version": "2004 Code with amendments; latest version TO_BE_VERIFIED",
+      "effective_date": null,
+      "source_url": "https://www.bescom.co.in/bescom/assets/pdfs/ConditionsofSupplyofElectricitywithIandIIAmendments.pdf"
+    }
+  ]
+}
