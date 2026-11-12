@@ -1,13 +1,10 @@
 import hashlib
 import json
 import time
-
 from pathlib import Path
 
 import fitz
-
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-
 
 RAW_DIR = Path("corpus/raw")
 PROCESSED_DIR = Path("corpus/processed")
@@ -79,10 +76,7 @@ def chunk_pages(
         for index, piece in enumerate(pieces):
             chunks.append(
                 {
-                    "chunk_id": (
-                        f'{page["document_id"]}:'
-                        f'{page["page"]}:{index}'
-                    ),
+                    "chunk_id": (f"{page['document_id']}:{page['page']}:{index}"),
                     "document_id": page["document_id"],
                     "document_name": page["document_name"],
                     "page": page["page"],
@@ -101,8 +95,7 @@ def run_ingestion():
 
     if not pdf_files:
         raise RuntimeError(
-            "No PDFs found in corpus/raw. "
-            "Download the official documents first."
+            "No PDFs found in corpus/raw. Download the official documents first."
         )
 
     all_pages = []
@@ -121,9 +114,7 @@ def run_ingestion():
         all_pages.extend(pages)
 
     if not all_pages:
-        raise RuntimeError(
-            "No text extracted from any PDF."
-        )
+        raise RuntimeError("No text extracted from any PDF.")
 
     chunks = chunk_pages(all_pages)
 
@@ -134,10 +125,7 @@ def run_ingestion():
         encoding="utf-8",
     ) as file:
         for chunk in chunks:
-            file.write(
-                json.dumps(chunk, ensure_ascii=False)
-                + "\n"
-            )
+            file.write(json.dumps(chunk, ensure_ascii=False) + "\n")
 
     elapsed = time.perf_counter() - start
 
@@ -158,9 +146,7 @@ def run_ingestion():
         ),
     }
 
-    (
-        INDEX_DIR / "ingestion_manifest.json"
-    ).write_text(
+    (INDEX_DIR / "ingestion_manifest.json").write_text(
         json.dumps(manifest, indent=2),
         encoding="utf-8",
     )

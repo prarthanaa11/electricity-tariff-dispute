@@ -2,12 +2,11 @@ import json
 from pathlib import Path
 from uuid import uuid4
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from app.models.contracts import DisputeRequest
-
 
 app = FastAPI(
     title="Electricity Tariff Dispute Triage Service",
@@ -44,16 +43,14 @@ async def validation_exception_handler(
 ):
     try:
         payload = await request.json()
-    except Exception:
+    except (json.JSONDecodeError, UnicodeDecodeError):
         payload = {
             "unreadable_request": True,
         }
 
     errors = [
         {
-            "field": ".".join(
-                str(part) for part in error["loc"]
-            ),
+            "field": ".".join(str(part) for part in error["loc"]),
             "message": error["msg"],
             "type": error["type"],
         }

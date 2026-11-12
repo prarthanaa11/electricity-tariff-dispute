@@ -1,12 +1,9 @@
 import json
-
 from pathlib import Path
 
 import faiss
 import numpy as np
-
 from sentence_transformers import SentenceTransformer
-
 
 CHUNKS_PATH = Path("corpus/processed/chunks.jsonl")
 INDEX_DIR = Path("data/index")
@@ -18,21 +15,13 @@ MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 
 def load_chunks():
-    with CHUNKS_PATH.open(
-        encoding="utf-8"
-    ) as file:
-        return [
-            json.loads(line)
-            for line in file
-            if line.strip()
-        ]
+    with CHUNKS_PATH.open(encoding="utf-8") as file:
+        return [json.loads(line) for line in file if line.strip()]
 
 
 def build_index():
     if not CHUNKS_PATH.exists():
-        raise RuntimeError(
-            "Run the ingestion pipeline first."
-        )
+        raise RuntimeError("Run the ingestion pipeline first.")
 
     chunks = load_chunks()
 
@@ -41,10 +30,7 @@ def build_index():
 
     model = SentenceTransformer(MODEL_NAME)
 
-    texts = [
-        chunk["text"]
-        for chunk in chunks
-    ]
+    texts = [chunk["text"] for chunk in chunks]
 
     embeddings = model.encode(
         texts,
@@ -58,9 +44,7 @@ def build_index():
         dtype=np.float32,
     )
 
-    index = faiss.IndexFlatIP(
-        embeddings.shape[1]
-    )
+    index = faiss.IndexFlatIP(embeddings.shape[1])
 
     index.add(embeddings)
 
@@ -86,9 +70,7 @@ def build_index():
         encoding="utf-8",
     )
 
-    print(
-        f"Indexed {len(chunks)} regulation chunks."
-    )
+    print(f"Indexed {len(chunks)} regulation chunks.")
 
 
 if __name__ == "__main__":

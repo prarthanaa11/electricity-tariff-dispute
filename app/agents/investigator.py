@@ -1,8 +1,8 @@
+from app.agents.state import InvestigationState
 from app.agents.tools import (
     lookup_request_fields,
     search_corpus,
 )
-from app.agents.state import InvestigationState
 
 
 def investigate(
@@ -16,7 +16,7 @@ def investigate(
         complaint["complaint_text"],
         (
             "Applicable tariff category definition for "
-            f'{facts.get("premises_type", "unknown")} premises'
+            f"{facts.get('premises_type', 'unknown')} premises"
         ),
         (
             "Rules for mixed domestic and commercial use, "
@@ -32,9 +32,7 @@ def investigate(
 
         results = search_corpus(query)
 
-        state["tool_call_count"] = (
-            state.get("tool_call_count", 0) + 1
-        )
+        state["tool_call_count"] = state.get("tool_call_count", 0) + 1
 
         evidence.extend(results)
 

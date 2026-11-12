@@ -3,7 +3,6 @@ import os
 import requests
 import streamlit as st
 
-
 API_BASE_URL = os.getenv(
     "API_BASE_URL",
     "http://localhost:8000",
@@ -15,9 +14,7 @@ st.set_page_config(
 )
 
 st.title("Electricity Tariff Dispute Triage")
-st.caption(
-    "Regulation-grounded recommendations for grievance officers"
-)
+st.caption("Regulation-grounded recommendations for grievance officers")
 
 st.warning(
     "This service provides evidence-based triage. "
@@ -25,9 +22,7 @@ st.warning(
 )
 
 with st.form("dispute_form"):
-    consumer_reference = st.text_input(
-        "Consumer reference"
-    )
+    consumer_reference = st.text_input("Consumer reference")
 
     complaint_text = st.text_area(
         "Describe the billing dispute",
@@ -57,9 +52,7 @@ with st.form("dispute_form"):
         value="domestic",
     )
 
-    submitted = st.form_submit_button(
-        "Submit dispute"
-    )
+    submitted = st.form_submit_button("Submit dispute")
 
 
 if submitted:
@@ -79,9 +72,7 @@ if submitted:
         )
 
         if response.status_code == 422:
-            st.error(
-                "The request failed validation."
-            )
+            st.error("The request failed validation.")
             st.json(response.json())
 
         else:
@@ -89,20 +80,14 @@ if submitted:
 
             result = response.json()
 
-            st.success(
-                "The dispute was submitted."
-            )
+            st.success("The dispute was submitted.")
 
             st.write(
                 "Run ID:",
                 result["run_id"],
             )
 
-            st.info(
-                "Record this ID to retrieve the result."
-            )
+            st.info("Record this ID to retrieve the result.")
 
     except requests.RequestException as exc:
-        st.error(
-            f"Could not contact the API: {exc}"
-        )
+        st.error(f"Could not contact the API: {exc}")

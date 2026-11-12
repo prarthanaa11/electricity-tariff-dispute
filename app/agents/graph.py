@@ -4,8 +4,8 @@ from langgraph.graph import (
     StateGraph,
 )
 
-from app.agents.state import InvestigationState
 from app.agents.investigator import investigate
+from app.agents.state import InvestigationState
 from app.agents.verifier import verify_evidence
 
 
@@ -63,6 +63,8 @@ def run_investigation(
             "recursion_limit": 8,
         },
     )
+
+
 def route_after_verification(state):
     if state.get("escalation_required"):
         if state.get("step_count", 0) < 3:

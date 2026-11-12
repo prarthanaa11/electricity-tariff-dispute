@@ -5,7 +5,6 @@ from fastapi import APIRouter, HTTPException
 from app.models.contracts import DisputeRequest
 from app.tasks import process_dispute
 
-
 router = APIRouter(
     prefix="/api/v1/disputes",
     tags=["disputes"],
@@ -27,9 +26,7 @@ def submit_dispute(
         "run_id": run_id,
         "task_id": task.id,
         "status": "queued",
-        "message": (
-            "The dispute was accepted for asynchronous processing."
-        ),
+        "message": ("The dispute was accepted for asynchronous processing."),
     }
 
 
@@ -41,16 +38,11 @@ def get_dispute_status(
     # Replace with a durable PostgreSQL run record in the
     # final version.
 
-    from app.core.celery_app import celery_app
-
     # The first implementation should use a mapping from
     # run_id to Celery task ID stored at submission time.
     # Do not assume run_id is the Celery task ID.
 
     raise HTTPException(
         status_code=501,
-        detail=(
-            "Run-status lookup must be connected to the "
-            "persistent run registry."
-        ),
+        detail=("Run-status lookup must be connected to the persistent run registry."),
     )

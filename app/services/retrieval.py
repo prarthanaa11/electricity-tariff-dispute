@@ -1,11 +1,8 @@
 import json
-
 from pathlib import Path
 
 import faiss
-
 from sentence_transformers import SentenceTransformer
-
 
 INDEX_PATH = Path("data/index/regulations.faiss")
 METADATA_PATH = Path("data/index/metadata.json")
@@ -14,27 +11,16 @@ METADATA_PATH = Path("data/index/metadata.json")
 class RegulationRetriever:
     def __init__(self):
         if not INDEX_PATH.exists():
-            raise RuntimeError(
-                "FAISS index not found. "
-                "Build the index first."
-            )
+            raise RuntimeError("FAISS index not found. Build the index first.")
 
-        self.index = faiss.read_index(
-            str(INDEX_PATH)
-        )
+        self.index = faiss.read_index(str(INDEX_PATH))
 
-        metadata = json.loads(
-            METADATA_PATH.read_text(
-                encoding="utf-8"
-            )
-        )
+        metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
 
         self.chunks = metadata["chunks"]
         self.model_name = metadata["model"]
 
-        self.model = SentenceTransformer(
-            self.model_name
-        )
+        self.model = SentenceTransformer(self.model_name)
 
     def search(
         self,
@@ -74,4 +60,3 @@ class RegulationRetriever:
             )
 
         return results
-    

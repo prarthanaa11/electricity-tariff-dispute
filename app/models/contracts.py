@@ -50,8 +50,6 @@ class DisputeRequest(BaseModel):
             self.premises_type == PremisesType.MIXED_USE
             and not self.complaint_text.strip()
         ):
-            raise ValueError(
-                "Mixed-use premises require complaint details."
-            )
+            raise ValueError("Mixed-use premises require complaint details.")
 
         return self

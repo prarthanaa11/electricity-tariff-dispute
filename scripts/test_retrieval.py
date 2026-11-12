@@ -21,15 +21,9 @@ def main():
         )
 
         for result in results:
-            print(
-                f'\nDocument: {result["document_name"]}'
-            )
-            print(
-                f'Page: {result["page"]}'
-            )
-            print(
-                f'Similarity: {result["similarity"]:.3f}'
-            )
+            print(f"\nDocument: {result['document_name']}")
+            print(f"Page: {result['page']}")
+            print(f"Similarity: {result['similarity']:.3f}")
             print(result["text"][:800])
 
 

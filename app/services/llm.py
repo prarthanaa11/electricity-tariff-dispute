@@ -5,8 +5,7 @@ class ModelProvider(Protocol):
     def generate(
         self,
         prompt: str,
-    ) -> dict[str, Any]:
-        ...
+    ) -> dict[str, Any]: ...
 
 
 class StubModelProvider:
@@ -22,10 +21,7 @@ class StubModelProvider:
     ) -> dict[str, Any]:
         return {
             "provider": "stub",
-            "response": (
-                "Insufficient evidence for a "
-                "regulatory determination."
-            ),
+            "response": ("Insufficient evidence for a regulatory determination."),
             "needs_more_evidence": True,
             "tool_calls": [],
         }

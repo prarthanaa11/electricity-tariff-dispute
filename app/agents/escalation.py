@@ -12,8 +12,7 @@ def escalate(
         "proposed_position": {
             "determination": None,
             "reason": (
-                state.get("escalation_reason")
-                or "Insufficient verified evidence."
+                state.get("escalation_reason") or "Insufficient verified evidence."
             ),
             "human_review_required": True,
         },

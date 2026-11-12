@@ -1,6 +1,5 @@
 from app.agents.state import InvestigationState
 
-
 ALLOWED_ROUTES = {
     "bill-stands-with-reason",
     "revision-recommended",
@@ -25,9 +24,7 @@ def verify_evidence(
     }
 
     if len(valid_chunks) != len(evidence):
-        errors.append(
-            "One or more passages lack a valid chunk ID or text."
-        )
+        errors.append("One or more passages lack a valid chunk ID or text.")
 
     complaint = state["complaint"]
 
@@ -49,22 +46,15 @@ def verify_evidence(
 
     # This is a conservative evidence-coverage check,
     # not a legal interpretation of the documents.
-    needs_human_review = (
-        premises_type == "mixed_use"
-        and not mixed_use_evidence
-    )
+    needs_human_review = premises_type == "mixed_use" and not mixed_use_evidence
 
-    escalation_required = (
-        bool(errors)
-        or needs_human_review
-    )
+    escalation_required = bool(errors) or needs_human_review
 
     if errors:
         reason = "Evidence verification failed."
     elif needs_human_review:
         reason = (
-            "The mixed-use issue is not sufficiently covered "
-            "by the retrieved evidence."
+            "The mixed-use issue is not sufficiently covered by the retrieved evidence."
         )
     else:
         reason = None
@@ -79,9 +69,5 @@ def verify_evidence(
         },
         "escalation_required": escalation_required,
         "escalation_reason": reason,
-        "status": (
-            "escalated"
-            if escalation_required
-            else "verified"
-        ),
+        "status": ("escalated" if escalation_required else "verified"),
     }

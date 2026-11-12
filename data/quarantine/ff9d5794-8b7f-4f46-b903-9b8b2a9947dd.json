@@ -1,0 +1,18 @@
+{
+  "record_id": "ff9d5794-8b7f-4f46-b903-9b8b2a9947dd",
+  "payload": {
+    "consumer_reference": "TEST-001",
+    "complaint_text": "My electricity bill is incorrect.",
+    "premises_type": "domestic",
+    "connected_load_kw": -5,
+    "current_tariff_category": "domestic"
+  },
+  "errors": [
+    {
+      "field": "body.connected_load_kw",
+      "message": "Input should be greater than 0",
+      "type": "greater_than"
+    }
+  ],
+  "agent_started": false
+}

@@ -2,16 +2,13 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 
-
 client = TestClient(app)
 
 
 def test_invalid_load_is_rejected():
     payload = {
         "consumer_reference": "TEST-001",
-        "complaint_text": (
-            "My electricity bill is incorrect."
-        ),
+        "complaint_text": ("My electricity bill is incorrect."),
         "premises_type": "domestic",
         "connected_load_kw": -5,
         "current_tariff_category": "domestic",

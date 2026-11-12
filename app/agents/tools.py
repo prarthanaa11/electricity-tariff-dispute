@@ -1,6 +1,5 @@
 from app.services.retrieval import RegulationRetriever
 
-
 _retriever = None
 
 
@@ -63,8 +62,4 @@ def lookup_request_fields(
         "complaint_type",
     ]
 
-    return {
-        key: complaint.get(key)
-        for key in allowed_fields
-        if key in complaint
-    }
+    return {key: complaint.get(key) for key in allowed_fields if key in complaint}

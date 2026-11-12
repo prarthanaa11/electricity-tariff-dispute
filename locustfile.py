@@ -1,6 +1,6 @@
 import time
 
-from locust import HttpUser, task, between
+from locust import HttpUser, between, task
 
 
 class TariffUser(HttpUser):
@@ -18,8 +18,7 @@ class TariffUser(HttpUser):
         payload = {
             "consumer_reference": "LOAD-TEST-001",
             "complaint_text": (
-                "My domestic connection is used "
-                "partly for a tailoring shop."
+                "My domestic connection is used partly for a tailoring shop."
             ),
             "premises_type": "mixed_use",
             "connected_load_kw": 3.0,
@@ -53,9 +52,7 @@ class TariffUser(HttpUser):
                 time.sleep(1)
                 continue
 
-            state = status_response.json().get(
-                "status"
-            )
+            state = status_response.json().get("status")
 
             if state in {
                 "completed",
@@ -68,9 +65,7 @@ class TariffUser(HttpUser):
                 # Record it in the benchmark results using
                 # a custom Locust event or a separate runner.
                 print(
-                    f"Run {run_id} finished "
-                    f"with state={state}, "
-                    f"elapsed={elapsed:.2f}s"
+                    f"Run {run_id} finished with state={state}, elapsed={elapsed:.2f}s"
                 )
 
                 break
