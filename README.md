@@ -285,8 +285,9 @@ Use the applicable official document versions and maintain source metadata, incl
 This project is intended as an AI-assisted decision-support and complaint-triage system. It does not provide legally binding decisions or replace official regulatory processes. Final decisions should be made by authorised personnel based on applicable regulations.
 
 ## Contributors
-
-Add the names and GitHub profiles of all project team members here.
+Prarthana D Acharya 
+Prachya S H
+Raksha R Poojary
 
 ---
 
